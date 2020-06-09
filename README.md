@@ -28,17 +28,17 @@ CORS-Scanner accepts line-delimited domains on `stdin`:
 ``` 
 ▶ cat recon/example/domains.txt | httprobe > CORS-domain.txt
 http://cors-test.example.com/test
-https://logcollector.api.example.jp
-https://cloudcore.api.example.jp
-https://photo.api.example.jp
+https://logcollector.api.example.com
+https://cloudcore.api.example.com
+https://photo.api.example.com
 ```
 ```
 ▶ cat CORS-domain.txt | CORS-Scanner
 [VULN - Found Misconfigured! Relefected Origin With Credentials True] Reflected Origin: evil.collrabrator.com, credentials: true, - URL: http://cors-test.example.com/test
 [VULN - Found Misconfigured! Relefected Origin With Credentials True] Reflected Origin: evil.collrabrator.com, credentials: true, - URL: https://example.com/Account/Login?ReturnUrl=%2f
-[VULN - Found Misconfigured! configured with Wildcard (*)] https://logcollector.api.example.jp
-[VULN - Found Misconfigured! configured with Wildcard (*)] https://cloudcore.api.example.jp
-[VULN - Found Misconfigured! configured with Wildcard (*)] https://photo.api.example.jp
+[VULN - Found Misconfigured! configured with Wildcard (*)] https://logcollector.api.example.com
+[VULN - Found Misconfigured! configured with Wildcard (*)] https://cloudcore.api.example.com
+[VULN - Found Misconfigured! configured with Wildcard (*)] https://photo.api.example.com
 ```
 
 Discover CORS misconfigurations for particular host:  
