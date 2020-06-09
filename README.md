@@ -1,16 +1,19 @@
 ## CORS-Scanner
 
 ###  CORS misconfiguration scanner
+
 CORS-Scanner is written in go, designed to discover CORS misconfigurations vulnerabilities of web application.
 
 ### Installation
-If you have Go installed and configured (i.e. with $GOPATH/bin in your $PATH): you can install meg with `go get`:
+
+If you have Go installed and configured (i.e. with $GOPATH/bin in your $PATH): you can install CORS-Scanner with `go get`:
 
 ```
 ▶ go get -u github.com/Tanmay-N/CORS-Scanner
 ```
 
 ### Usage 
+
 ```
 CORS-Scanner -h 
 
