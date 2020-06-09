@@ -100,26 +100,28 @@ func origincheck(origin string, session string) bool {
 
 				if header == "null" && resp.Header.Get("Access-Control-Allow-Credentials") == "true" {
 
-					fmt.Printf("[%s] Reflected Origin: %s, credentials: %s, - URL: %s\n", aurora.BgBrightRed("VULN - Found Misconfigured!").String(), origin, "true", rawURL)
+					fmt.Printf("[%s] Reflected Origin: %s, credentials: %s, - URL: %s\n", aurora.BgBrightRed("VULN - Found Misconfigured! Null Origin Value and Credentials true").String(), origin, "true", rawURL)
 
 				} else if header == "null" {
 
-					fmt.Printf("[%s] Origin: %s - URL: %s\n", aurora.Red("VULN - Found Misconfigured! (NULL)").String(), origin, rawURL)
+					fmt.Printf("[%s] Origin: %s - URL: %s\n", aurora.Red("VULN - Found Misconfigured! with Null Origin Value (NULL)").String(), origin, rawURL)
 
 				} else if header == origin && resp.Header.Get("Access-Control-Allow-Credentials") == "true" {
 
-					fmt.Printf("[%s] Reflected Origin: %s, credentials: %s, - URL: %s\n", aurora.BrightMagenta("VULN - Found Misconfigured!").String(), origin, "true", rawURL)
+					fmt.Printf("[%s] Reflected Origin: %s, credentials: %s, - URL: %s\n", aurora.BrightMagenta("VULN - Found Misconfigured! Relefected Origin With Credentials True").String(), origin, "true", rawURL)
 
 				} else {
 
-					fmt.Printf("[%s] Origin: %s - URL: %s\n", aurora.BrightMagenta("VULN - Found Misconfigured!").String(), origin, rawURL)
+					fmt.Printf("[%s] Origin: %s - URL: %s\n", aurora.BrightMagenta("VULN - Found Misconfigured! with Refelected Origin").String(), origin, rawURL)
 
 				}
 				status = true
 
-			} else if header == "*" {
-				fmt.Printf("[%s] %s\n", aurora.BrightYellow("VULN - affected with Intranets and CORS without credentials (*)").String(), rawURL)
+			} else if header == "*" && resp.Header.Get("Access-Control-Allow-Credentials") == "true" {
+				fmt.Printf("[%s] %s\n", aurora.BrightYellow("VULN - Found Misconfigured! configured with Wildcard (*) and Credentials Vaule").String(), rawURL)
 				status = true
+			} else if header == "*" {
+				fmt.Printf("[%s] %s\n", aurora.BrightYellow("VULN - Found Misconfigured! configured with Wildcard (*)").String(), rawURL)
 			}
 		}()
 
