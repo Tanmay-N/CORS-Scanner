@@ -27,9 +27,10 @@ CORS-Scanner accepts line-delimited domains on `stdin`:
 
 ``` 
 ▶ cat recon/example/domains.txt | httprobe > CORS-domain.txt
-example.com
-example.edu
-example.net
+http://cors-test.example.com/test
+https://logcollector.api.example.jp
+https://cloudcore.api.example.jp
+https://photo.api.example.jp
 ```
 ```
 ▶ cat CORS-domain.txt | CORS-Scanner
@@ -45,5 +46,3 @@ Discover CORS misconfigurations for particular host:
 ```
  ▶ echo "https://example.com/" | CORS-Scanner
  ```
-
-
