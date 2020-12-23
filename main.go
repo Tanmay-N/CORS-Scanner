@@ -21,7 +21,7 @@ func main() {
 	flag.StringVar(&session, "s", "session=nulll", "Set the Cookie if required! (Default=Nill)")
 
 	var origin string
-	flag.StringVar(&origin, "o", "evil.collrabrator.com", "Set the Origin Header (Default=evil.collrabrator.com)")
+	flag.StringVar(&origin, "o", "evil.collaborator.com", "Set the Origin Header (Default=evil.collaborator.com)")
 
 	flag.Parse()
 
@@ -82,9 +82,6 @@ func origincheck(origin string, session string) bool {
 			req.Header.Add("Host", rawURL)
 			req.Header.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko/20100101")
 			req.Header.Add("Accept-Language", "en-US,en;q=0.5")
-			req.Header.Add("Accept-Encoding", "gzip, deflate")
-			//output, err := httputil.DumpRequest(req, true)
-			//	fmt.Println(string(output))
 
 			if err != nil {
 				return
@@ -92,6 +89,7 @@ func origincheck(origin string, session string) bool {
 
 			resp, err := client.Do(req)
 			if err != nil {
+				fmt.Printf("server not responding %s", err.Error())
 				return
 			}
 			defer resp.Body.Close()
